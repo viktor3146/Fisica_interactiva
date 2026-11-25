@@ -125,6 +125,18 @@
         color: #4f46e5;
         background: #eef2ff;
       }
+
+      /* Forzar que el contenedor de MathJax sea inline y no rompa el flujo */
+      mjx-container {
+        display: inline-block !important;
+        margin: 0 2px !important;
+        white-space: nowrap !important; /* Evita que la fórmula se parta por dentro */
+      }
+
+      /* Si el problema es que el texto del párrafo tiene un ancho muy ajustado */
+      .text-sm.text-amber-700 {
+        display: inline;
+      }
     </style>
   </head>
 
@@ -872,6 +884,28 @@
         icon.style.transform = isHidden ? "rotate(180deg)" : "";
       }
     </script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+        chtml: {
+          // Esto evita que MathJax gestione los saltos de línea como bloques
+          linebreaks: {
+            automatic: false,
+          },
+        },
+      };
+    </script>
+    <!-- Ahora sí, carga la librería -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
+    ></script>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
