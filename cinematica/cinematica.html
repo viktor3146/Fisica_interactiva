@@ -10,6 +10,30 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- CONFIGURACIÓN DE MATHJAX (Debe ir antes de cargar el script principal) -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ], // Permite usar $x$ para en línea
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ], // Permite usar $$ x $$ para bloques
+        },
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+
     <style>
       * {
         font-family: "Inter", sans-serif;
@@ -126,22 +150,16 @@
         background: #eef2ff;
       }
 
-      /* Forzar que el contenedor de MathJax sea inline y no rompa el flujo */
+      /* Forzar que el contenedor de MathJax sea inline */
       mjx-container {
         display: inline-block !important;
         margin: 0 2px !important;
-        white-space: nowrap !important; /* Evita que la fórmula se parta por dentro */
-      }
-
-      /* Si el problema es que el texto del párrafo tiene un ancho muy ajustado */
-      .text-sm.text-amber-700 {
-        display: inline;
       }
     </style>
   </head>
 
   <body class="bg-white text-slate-800">
-    <!-- ===================== HEADER (idéntico al home) ===================== -->
+    <!-- ===================== HEADER ===================== -->
     <div class="bg-slate-900 text-white text-xs py-1.5 px-4 sm:px-6">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <span class="text-slate-400">Sitio creado para fines educativos</span>
@@ -215,8 +233,7 @@
               href="maquina-atwood.html"
               class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-500 transition-colors shadow-sm"
             >
-              <i data-lucide="play" class="w-4 h-4"></i>
-              Sims
+              <i data-lucide="play" class="w-4 h-4"></i> Sims
             </a>
             <button
               id="menuToggle"
@@ -296,8 +313,7 @@
           <div
             class="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 rounded-full text-xs font-semibold text-indigo-600 mb-4"
           >
-            <i data-lucide="move-right" class="w-3.5 h-3.5"></i>
-            Unidad 1
+            <i data-lucide="move-right" class="w-3.5 h-3.5"></i> Unidad 1
           </div>
           <h1
             class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight leading-[1.1] mb-4"
@@ -313,11 +329,10 @@
       </div>
     </section>
 
-    <!-- ===================== CONTENIDO CON SIDEBAR ===================== -->
+    <!-- ===================== CONTENIDO ===================== -->
     <section class="bg-white py-12 lg:py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="grid lg:grid-cols-[240px_1fr] gap-10">
-          <!-- Sidebar / TOC -->
           <aside class="hidden lg:block">
             <div class="sticky top-24">
               <p
@@ -339,7 +354,6 @@
             </div>
           </aside>
 
-          <!-- Main Content -->
           <main class="min-w-0">
             <!-- ===== MRU ===== -->
             <article
@@ -361,7 +375,7 @@
                 <p class="text-xs text-slate-400 font-medium mb-1">
                   Ecuación de posición
                 </p>
-                <p class="formula">\[x(t) = x_0 + v\,t\]</p>
+                <p class="formula">\[ x(t) = x_0 + v \, t \]</p>
               </div>
 
               <!-- Variables -->
@@ -370,11 +384,11 @@
                   <p class="text-sm font-medium text-slate-700 mb-2">
                     Donde las variables significan:
                   </p>
-                  <ul>
-                    <li>\[x(t) \,\, \text{posición final (m)}\]</li>
-                    <li>\[x_0 \,\, \text{posición inicial (m)}\]</li>
-                    <li>\[v \,\, \text{velocidad (m/s)}\]</li>
-                    <li>\[t \,\, \text{tiempo (s)}\]</li>
+                  <ul class="space-y-2 text-slate-600">
+                    <li>\( x(t) \) : posición final (m)</li>
+                    <li>\( x_0 \) : posición inicial (m)</li>
+                    <li>\( v \) : velocidad (m/s)</li>
+                    <li>\( t \) : tiempo (s)</li>
                   </ul>
                 </div>
                 <div class="bg-amber-50 border border-amber-100 rounded-xl p-4">
@@ -384,8 +398,8 @@
                     <i data-lucide="lightbulb" class="w-4 h-4"></i> Dato clave
                   </p>
                   <p class="text-sm text-amber-700 leading-relaxed">
-                    \[ \text{ En el MRU la gráfica } x(t) \, \text{es una recta
-                    \\ con pendiente igual a la velocidad.} \]
+                    En el MRU la gráfica \( x(t) \) es una recta con pendiente
+                    igual a la velocidad.
                   </p>
                 </div>
               </div>
@@ -400,28 +414,27 @@
                   <i data-lucide="pencil" class="w-4 h-4"></i> Ejemplo resuelto
                 </p>
                 <p class="text-sm text-slate-700 mb-3">
-                  \[ \text{Un auto viaja a 60 km/h constante. Si parte de } x_0
-                  = 20 \, \text{km, ¿cuál es su posición a las 2 horas?} \]
+                  Un auto viaja a \( 60 \text{ km/h} \) constante. Si parte de
+                  \( x_0 = 20 \text{ km} \), ¿cuál es su posición a las 2 horas?
                 </p>
                 <div class="space-y-2 text-sm">
                   <div class="flex items-start gap-3">
                     <span class="step-number">1</span>
                     <span class="text-slate-600 pt-1"
-                      >\[ \text{Convertimos: } v = 60 \, \text{km/h} = 16.67 \,
-                      \text{m/s}\]</span
+                      >Convertimos: \( v = 60 \text{ km/h} = 16.67 \text{ m/s}
+                      \)</span
                     >
                   </div>
                   <div class="flex items-start gap-3">
                     <span class="step-number">2</span>
                     <span class="text-slate-600 pt-1"
-                      >\[\text{Reemplazamos: } x(t) = x_0 + v \, t\]</span
+                      >Reemplazamos: \( x(t) = x_0 + v \, t \)</span
                     >
                   </div>
                   <div class="flex items-start gap-3">
                     <span class="step-number">3</span>
-                    <span style="color: #3730a3" class="text-slate-600 pt-1"
-                      >\[ \text{Resultado: } x(2) = x_0 + 33.34 \, \text{m}
-                      \]</span
+                    <span class="text-slate-600 pt-1"
+                      >Resultado: \( x(2) = x_0 + 33.34 \text{ m} \)</span
                     >
                   </div>
                 </div>
@@ -445,26 +458,23 @@
               <div class="space-y-3">
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
-                    \[ \text{Velocidad en función del tiempo} \]
+                    Velocidad en función del tiempo
                   </p>
-                  <p class="formula">\[v(t) = v_0 + a \, t\]</p>
+                  <p class="formula">\[ v(t) = v_0 + a \, t \]</p>
                 </div>
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
-                    \[ \text{Posición en función del tiempo} \]
+                    Posición en función del tiempo
                   </p>
                   <p class="formula">
-                    \[x(t) = x_0 + v_0 \, t + \frac{1}{2} a \, t^2\]
+                    \[ x(t) = x_0 + v_0 \, t + \frac{1}{2} a \, t^2 \]
                   </p>
                 </div>
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
-                    \[ \text{Velocidad en función de la posición (sin t)} \]
+                    Velocidad en función de la posición
                   </p>
-                  <p class="formula">
-                    \[v^2(t) = v_0^2 + 2 \, a \, \underbrace{(x(t) -
-                    x_0)}_{\Delta x}\]
-                  </p>
+                  <p class="formula">\[ v^2 = v_0^2 + 2 \, a \, (x - x_0) \]</p>
                 </div>
               </div>
 
@@ -477,20 +487,21 @@
                   <i data-lucide="pencil" class="w-4 h-4"></i> Ejemplo resuelto
                 </p>
                 <p class="text-sm text-slate-700 mb-3">
-                  Un coche frena con a = −4 m/s². Si va a 72 km/h, ¿cuánto tarda
-                  en detenerse?
+                  Un coche frena con \( a = -4 \text{ m/s}^2 \). Si va a \( 72
+                  \text{ km/h} \), ¿cuánto tarda en detenerse?
                 </p>
                 <div class="space-y-2 text-sm">
                   <div class="flex items-start gap-3">
                     <span class="step-number">1</span>
                     <span class="text-slate-600 pt-1"
-                      >v₀ = 72 km/h = <strong>20 m/s</strong>, v = 0 m/s</span
+                      >\( v_0 = 72 \text{ km/h} = 20 \text{ m/s} \), \( v = 0
+                      \text{ m/s} \)</span
                     >
                   </div>
                   <div class="flex items-start gap-3">
                     <span class="step-number">2</span>
                     <span class="text-slate-600 pt-1"
-                      >0 = 20 + (−4) · t → t = 20/4</span
+                      >\( 0 = 20 + (-4) \cdot t \rightarrow t = 20/4 \)</span
                     >
                   </div>
                   <div class="flex items-start gap-3">
@@ -498,7 +509,7 @@
                     <span class="text-slate-600 pt-1"
                       >Resultado:
                       <strong class="text-green-700"
-                        >t = 5 segundos</strong
+                        >\( t = 5 \text{ segundos} \)</strong
                       ></span
                     >
                   </div>
@@ -525,13 +536,15 @@
                   <p class="text-xs text-slate-400 font-medium mb-1">
                     Eje X (MRU)
                   </p>
-                  <p class="formula">x = v₀ · cos(θ) · t</p>
+                  <p class="formula">\[ x = v_0 \cos(\theta) \, t \]</p>
                 </div>
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
                     Eje Y (MRUA)
                   </p>
-                  <p class="formula">y = v₀ · sin(θ) · t − ½ · g · t²</p>
+                  <p class="formula">
+                    \[ y = v_0 \sin(\theta) \, t - \frac{1}{2} g \, t^2 \]
+                  </p>
                 </div>
               </div>
 
@@ -541,17 +554,20 @@
                 </p>
                 <div class="space-y-2 text-sm text-slate-600">
                   <p>
-                    • <strong>Alcance máximo:</strong> R = v₀² · sen(2θ) / g
+                    • <strong>Alcance máximo:</strong> \( R = \frac{v_0^2
+                    \sin(2\theta)}{g} \)
                   </p>
                   <p>
-                    • <strong>Altura máxima:</strong> H = v₀² · sen²(θ) / (2g)
+                    • <strong>Altura máxima:</strong> \( H = \frac{v_0^2
+                    \sin^2(\theta)}{2g} \)
                   </p>
                   <p>
-                    • <strong>Tiempo de vuelo:</strong> T = 2 · v₀ · sen(θ) / g
+                    • <strong>Tiempo de vuelo:</strong> \( T = \frac{2 v_0
+                    \sin(\theta)}{g} \)
                   </p>
                   <p>
-                    • <strong>Alcance máximo (θ = 45°):</strong> R<sub>max</sub>
-                    = v₀² / g
+                    • <strong>Alcance máximo (θ = 45°):</strong> \( R_{max} =
+                    \frac{v_0^2}{g} \)
                   </p>
                 </div>
               </div>
@@ -578,26 +594,26 @@
                   <p class="text-xs text-slate-400 font-medium mb-1">
                     Velocidad angular
                   </p>
-                  <p class="formula">ω = 2π / T = 2π · f</p>
+                  <p class="formula">\[ \omega = \frac{2\pi}{T} = 2\pi f \]</p>
                 </div>
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
                     Rapidez lineal
                   </p>
-                  <p class="formula">v = ω · r</p>
+                  <p class="formula">\[ v = \omega r \]</p>
                 </div>
                 <div class="formula-box">
                   <p class="text-xs text-slate-400 font-medium mb-1">
                     Aceleración centrípeta
                   </p>
-                  <p class="formula">a<sub>c</sub> = v² / r = ω² · r</p>
+                  <p class="formula">\[ a_c = \frac{v^2}{r} = \omega^2 r \]</p>
                 </div>
               </div>
 
               <div class="grid sm:grid-cols-3 gap-4">
                 <div class="bg-blue-50 rounded-xl p-4 text-center">
                   <p class="text-xs text-blue-600 font-medium mb-1">Período</p>
-                  <p class="text-lg font-semibold text-blue-800 font-mono">T</p>
+                  <p class="text-lg font-semibold text-blue-800">\( T \)</p>
                   <p class="text-xs text-blue-600 mt-1">
                     Tiempo por vuelta (s)
                   </p>
@@ -606,8 +622,8 @@
                   <p class="text-xs text-purple-600 font-medium mb-1">
                     Frecuencia
                   </p>
-                  <p class="text-lg font-semibold text-purple-800 font-mono">
-                    f = 1/T
+                  <p class="text-lg font-semibold text-purple-800">
+                    \( f = \frac{1}{T} \)
                   </p>
                   <p class="text-xs text-purple-600 mt-1">
                     Vueltas por segundo (Hz)
@@ -617,8 +633,8 @@
                   <p class="text-xs text-rose-600 font-medium mb-1">
                     Fuerza centrípeta
                   </p>
-                  <p class="text-lg font-semibold text-rose-800 font-mono">
-                    F = m·v²/r
+                  <p class="text-lg font-semibold text-rose-800">
+                    \( F = \frac{mv^2}{r} \)
                   </p>
                   <p class="text-xs text-rose-600 mt-1">Apunta al centro</p>
                 </div>
@@ -650,8 +666,8 @@
                         >1</span
                       >
                       <span class="text-sm font-medium text-slate-700"
-                        >Un móvil viaja a 15 m/s constante. ¿Qué distancia
-                        recorre en 10 segundos?</span
+                        >Un móvil viaja a \( 15 \text{ m/s} \) constante. ¿Qué
+                        distancia recorre en \( 10 \text{ s} \)?</span
                       >
                     </div>
                     <i
@@ -664,7 +680,9 @@
                       class="bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800"
                     >
                       <p class="font-medium mb-1">Solución:</p>
-                      <p>x = v · t = 15 · 10 = <strong>150 metros</strong></p>
+                      <p>
+                        \( x = v \cdot t = 15 \cdot 10 = 150 \text{ metros} \)
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -683,8 +701,8 @@
                         >2</span
                       >
                       <span class="text-sm font-medium text-slate-700"
-                        >Un objeto parte del reposo con a = 3 m/s². ¿Cuál es su
-                        velocidad a los 4 segundos?</span
+                        >Un objeto parte del reposo con \( a = 3 \text{ m/s}^2
+                        \). ¿Cuál es su velocidad a los \( 4 \text{ s} \)?</span
                       >
                     </div>
                     <i
@@ -697,7 +715,10 @@
                       class="bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800"
                     >
                       <p class="font-medium mb-1">Solución:</p>
-                      <p>v = v₀ + a·t = 0 + 3·4 = <strong>12 m/s</strong></p>
+                      <p>
+                        \( v = v_0 + a \cdot t = 0 + 3 \cdot 4 = 12 \text{ m/s}
+                        \)
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -716,8 +737,9 @@
                         >3</span
                       >
                       <span class="text-sm font-medium text-slate-700"
-                        >Se lanza un proyectil con v₀ = 20 m/s a 30°. ¿Cuál es
-                        el alcance máximo? (g = 10 m/s²)</span
+                        >Se lanza un proyectil con \( v_0 = 20 \text{ m/s} \) a
+                        \( 30^\circ \). ¿Cuál es el alcance máximo? (\( g = 10
+                        \text{ m/s}^2 \))</span
                       >
                     </div>
                     <i
@@ -731,8 +753,9 @@
                     >
                       <p class="font-medium mb-1">Solución:</p>
                       <p>
-                        R = v₀²·sen(2θ)/g = 400·sen(60°)/10 = 400·0.866/10 =
-                        <strong>34.64 metros</strong>
+                        \( R = \frac{v_0^2 \sin(2\theta)}{g} = \frac{400 \cdot
+                        \sin(60^\circ)}{10} = \frac{400 \cdot 0.866}{10} = 34.64
+                        \text{ metros} \)
                       </p>
                     </div>
                   </div>
@@ -752,8 +775,9 @@
                         >4</span
                       >
                       <span class="text-sm font-medium text-slate-700"
-                        >Un punto gira con T = 0.5 s en un radio de 0.2 m. ¿Cuál
-                        es la aceleración centrípeta?</span
+                        >Un punto gira con \( T = 0.5 \text{ s} \) en un radio
+                        de \( 0.2 \text{ m} \). ¿Cuál es la aceleración
+                        centrípeta?</span
                       >
                     </div>
                     <i
@@ -766,10 +790,13 @@
                       class="bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800"
                     >
                       <p class="font-medium mb-1">Solución:</p>
-                      <p>ω = 2π/T = 2π/0.5 = 4π rad/s</p>
                       <p>
-                        a<sub>c</sub> = ω²·r = (4π)²·0.2 = 16π²·0.2 =
-                        <strong>31.58 m/s²</strong>
+                        \( \omega = \frac{2\pi}{T} = \frac{2\pi}{0.5} = 4\pi
+                        \text{ rad/s} \)
+                      </p>
+                      <p>
+                        \( a_c = \omega^2 r = (4\pi)^2 \cdot 0.2 = 16\pi^2 \cdot
+                        0.2 = 31.58 \text{ m/s}^2 \)
                       </p>
                     </div>
                   </div>
@@ -784,15 +811,14 @@
                   href="index.html"
                   class="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors"
                 >
-                  <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                  Volver al inicio
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al
+                  inicio
                 </a>
                 <a
                   href="dinamica.html"
                   class="flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
                 >
-                  Dinámica
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  Dinámica <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
               </div>
             </article>
@@ -801,7 +827,7 @@
       </div>
     </section>
 
-    <!-- ===================== FOOTER (idéntico al home) ===================== -->
+    <!-- ===================== FOOTER ===================== -->
     <footer class="bg-slate-900 text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div
@@ -887,31 +913,5 @@
         icon.style.transform = isHidden ? "rotate(180deg)" : "";
       }
     </script>
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [["\\(", "\\)"]],
-          displayMath: [
-            ["$$", "$$"],
-            ["\\[", "\\]"],
-          ],
-        },
-        chtml: {
-          // Esto evita que MathJax gestione los saltos de línea como bloques
-          linebreaks: {
-            automatic: false,
-          },
-        },
-      };
-    </script>
-    <!-- Ahora sí, carga la librería -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"
-    ></script>
   </body>
 </html>
